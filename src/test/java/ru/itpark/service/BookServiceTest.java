@@ -62,4 +62,19 @@ class BookServiceTest {
         assertEquals("1-234-567-8910", books[0].getIsbn());
 
     }
+    @Test
+    public void searchByGenre() {
+        BookRepository repository = new BookRepository();
+        BookService service = new BookService (repository);
+        String[] genre = {"drama", "fiction", "poetry","history"};
+        service.create ("Гайдар", "1-234-567-8910", genre );
+        service.create ("Гайдар", "1-098-765-4321", genre);
+        service.create ("А. Гайдар", "1-098-765-4000", genre);
+        service.create ("Агата Кристи", "1-000-765-4321", genre);
+
+        SearchBook[] books = service.searchByGenre("drama");
+
+        assertEquals("drama", books[0].getGenre());
+
+    }
 }

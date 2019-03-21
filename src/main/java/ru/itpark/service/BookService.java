@@ -55,4 +55,40 @@ public class BookService {
         }
         return result;
     }
-}
+    public SearchBook [] searchByGenre(String text) {
+        SearchBook[] result = new SearchBook[10];
+        int resultIndex = 0;
+
+        SearchBook[] books = repository.getAll();
+        for (SearchBook book : books) {
+            if (book == null) {
+                continue;
+            }
+            String[] genres = book.getGenre();
+            for (String genre : genres) {
+                if (genre.equals(text)) {
+                    result[resultIndex] = book;
+                    resultIndex++;
+                    break;
+                }
+            }
+        }
+        return result;
+    }}
+
+
+/*
+   String[] tags = post.getTags();
+            for (String tag : tags) { // перебираем все теги поста
+                if (tag.equals(text)) { // если тег соответствует
+                    result[resultIndex] = post; // кладём пост в результаты поиска
+                    resultIndex++;
+                    break; // следующие теги перебирать смысла нет (т.к. наш уже подошёл)
+ */
+
+
+
+
+
+
+
