@@ -6,6 +6,7 @@ public class SearchBook {
     private String isbn;
     private String[] genre;
 
+
     public SearchBook(int id, String author, String isbn, String[] genre) {
         this.id = id;
         this.author = author;
