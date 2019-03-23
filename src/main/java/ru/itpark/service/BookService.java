@@ -78,7 +78,7 @@ public class BookService {
 
 
 /*
-   String[] tags = post.getTags();
+   String[] tags = post.getTags(); в статье есть тэги. мы их храним как массив.
             for (String tag : tags) { // перебираем все теги поста
                 if (tag.equals(text)) { // если тег соответствует
                     result[resultIndex] = post; // кладём пост в результаты поиска

@@ -40,7 +40,6 @@ class BookServiceTest {
         service.create("Агата Кристи", "1-000-765-4321", genre);
 
         SearchBook[] books = service.searchByAuthor("Гайдар");
-        //SearchBook [] author = service.searchByAuthor("Гайдар");
         assertEquals("Гайдар", books[0].getAuthor());
         assertEquals("Гайдар", books[1].getAuthor());
         assertEquals("А. Гайдар", books[2].getAuthor());
@@ -62,23 +61,28 @@ class BookServiceTest {
         assertEquals("1-234-567-8910", books[0].getIsbn());
 
     }
-}
-    /*@Test
-     public void searchByGenre() {
+
+    @Test
+    public void searchByGenre() {
         BookRepository repository = new BookRepository();
-        BookService service = new BookService (repository);
-       // String[] genre = {"drama", "fiction", "poetry","history"};
+        BookService service = new BookService(repository);
+        String[] genre = {"drama", "fiction", "poetry", "history"};
+        //задаем массив жанр для книги Гайдар с isbn 1-234-567-8910
 
 
-        service.create ("Гайдар", "1-234-567-8910", "drama");
-        service.create ("Гайдар", "1-098-765-4321", "fiction");
-        service.create ("А. Гайдар", "1-098-765-4000", "poetry");
-        service.create ("Агата Кристи", "1-000-765-4321", "history");
+        service.create("Гайдар", "1-234-567-8910", genre); //создаем строчку с заданными жанрами
+        service.create("Гайдар", "1-098-765-4321", new String[]{});
+        //это строчки c какими то другими жанрами
+        service.create("А. Гайдар", "1-098-765-4000", new String[]{});
+        service.create("Агата Кристи", "1-000-765-4321", new String[]{});
 
         SearchBook[] books = service.searchByGenre("drama");
+        //здесь мы говорим, что нам нужно найти книгу с жанром драма
 
-        assertEquals("drama", books[0].getGenre());
+        assertEquals("1-234-567-8910", books[0].getIsbn());//мы видим,
+        // что жанр драма  есть у книжки с исбн-ом 1-234-567-8910, поэтому говорим,
+        // что нужно найти именно ее
 
-    }*/
-
+    }
+}
 
