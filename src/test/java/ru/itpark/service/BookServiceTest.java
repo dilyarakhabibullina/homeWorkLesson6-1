@@ -66,23 +66,24 @@ class BookServiceTest {
     public void searchByGenre() {
         BookRepository repository = new BookRepository();
         BookService service = new BookService(repository);
-        String[] genre = {"drama", "fiction", "poetry", "history"};
+        String[] genre = {"fiction", "poetry"};
+        String[] genre1 = {"fiction", "history"};
         //задаем массив жанр для книги Гайдар с isbn 1-234-567-8910
 
 
         service.create("Гайдар", "1-234-567-8910", genre); //создаем строчку с заданными жанрами
-        service.create("Гайдар", "1-098-765-4321", new String[]{});
+        service.create("Гайдар", "1-098-765-4321", genre1);
         //это строчки c какими то другими жанрами
         service.create("А. Гайдар", "1-098-765-4000", new String[]{});
         service.create("Агата Кристи", "1-000-765-4321", new String[]{});
 
-        SearchBook[] books = service.searchByGenre("drama");
+        SearchBook[] books = service.searchByGenre("fiction");
         //здесь мы говорим, что нам нужно найти книгу с жанром драма
 
         assertEquals("1-234-567-8910", books[0].getIsbn());//мы видим,
         // что жанр драма  есть у книжки с исбн-ом 1-234-567-8910, поэтому говорим,
         // что нужно найти именно ее
-
+        assertEquals("1-098-765-4321", books[1].getIsbn());
     }
 }
 

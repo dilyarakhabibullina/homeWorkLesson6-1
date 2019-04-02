@@ -55,7 +55,8 @@ public class BookService {
         }
         return result;
     }
-    public SearchBook [] searchByGenre(String text) {
+
+    public SearchBook[] searchByGenre(String text) {
         SearchBook[] result = new SearchBook[10];
         int resultIndex = 0;
 
@@ -74,7 +75,8 @@ public class BookService {
             }
         }
         return result;
-    }}
+    }
+}
 
 
 /*

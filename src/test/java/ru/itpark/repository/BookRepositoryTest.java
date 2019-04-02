@@ -16,6 +16,7 @@ class BookRepositoryTest {
         SearchBook[] books = repository.getAll();
         assertEquals(book, books[0]);
     }
+
     @Test
     void addTwoBooks() {
         BookRepository repository = new BookRepository();
@@ -26,6 +27,6 @@ class BookRepositoryTest {
         repository.addBooks(book2);
         SearchBook[] books = repository.getAll();
         assertEquals(book1, books[0]);
-        assertEquals(book2, books [1]);
+        assertEquals(book2, books[1]);
     }
 }
